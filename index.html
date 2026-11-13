@@ -1,277 +1,102 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b241e">
-  <meta name="description" content="A clearer view of daily operations. Ibra Dreams brings sales, stock, finance, people and logistics into one management workspace.">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Ibra Dreams brings day-to-day operations into one clear management workspace: sales, stock, finance, people and logistics.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ibra Dreams | One view of the work">
-  <meta property="og:description" content="A practical management workspace for sales, stock, finance, people and logistics.">
+  <meta property="og:description" content="A practical management workspace for connected teams and everyday operations.">
   <title>Ibra Dreams | One view of the work</title>
   <style>
-    :root {
-      color-scheme: light;
-      --forest: #0b241e;
-      --forest-2: #12392e;
-      --green: #1b7a56;
-      --lime: #c9ef73;
-      --paper: #f7f8f3;
-      --white: #fff;
-      --ink: #17241f;
-      --muted: #64736c;
-      --line: #e3e9e3;
-      --shadow: 0 24px 70px rgba(11, 36, 30, .12);
-      --radius: 24px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-synthesis: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.55; }
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
-    .skip-link { position: absolute; z-index: 20; top: 10px; left: 10px; padding: 10px 14px; transform: translateY(-160%); border-radius: 8px; background: var(--lime); color: var(--forest); font-weight: 700; }
-    .skip-link:focus { transform: translateY(0); }
-    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
-    .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(227, 233, 227, .8); background: rgba(247, 248, 243, .92); backdrop-filter: blur(14px); }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.04em; }
-    .brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 13px; background: var(--forest); color: var(--lime); font-size: 15px; letter-spacing: -.07em; }
-    .brand-name { font-size: 17px; }
-    .nav-links { display: flex; align-items: center; gap: 29px; }
-    .nav-links a { color: #43544b; font-size: 14px; font-weight: 650; text-decoration: none; }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 47px; padding: 0 19px; border: 0; border-radius: 999px; background: var(--lime); color: var(--forest); font-weight: 750; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
-    .nav-cta { min-height: 42px; font-size: 13px; }
-    .button:hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(11, 36, 30, .14); }
-    .button-dark { background: var(--forest); color: var(--white); }
-    .button-outline { border: 1px solid rgba(255,255,255,.32); background: transparent; color: var(--white); }
-    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--forest); cursor: pointer; }
-    .hero { position: relative; overflow: hidden; padding: 78px 0 76px; background: var(--forest); color: var(--white); }
-    .hero::before, .hero::after { position: absolute; content: ""; border: 1px solid rgba(201,239,115,.14); border-radius: 50%; pointer-events: none; }
-    .hero::before { width: 720px; height: 720px; top: -420px; right: -210px; }
-    .hero::after { width: 520px; height: 520px; top: -320px; right: -110px; }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 64px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 21px; color: var(--lime); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-    .eyebrow::before { width: 24px; height: 1px; background: currentColor; content: ""; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 700px; margin-bottom: 22px; font-size: clamp(44px, 6vw, 76px); line-height: .99; letter-spacing: -.065em; }
-    h1 span { color: var(--lime); }
-    .hero-copy { max-width: 540px; margin-bottom: 30px; color: #c2d0c8; font-size: 17px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-note { margin: 19px 0 0; color: #94aaa0; font-size: 12px; }
-    .dashboard { position: relative; padding: 16px; border: 1px solid rgba(255,255,255,.15); border-radius: 26px; background: rgba(255,255,255,.08); box-shadow: 0 30px 90px rgba(0,0,0,.24); transform: rotate(1.4deg); }
-    .dash-window { overflow: hidden; border-radius: 17px; background: #f7f8f3; color: var(--ink); }
-    .dash-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--line); }
-    .dash-title { font-size: 12px; font-weight: 800; }
-    .dash-period { padding: 5px 9px; border-radius: 99px; background: #edf2e8; color: var(--muted); font-size: 10px; font-weight: 700; }
-    .dash-body { padding: 17px; }
-    .mini-kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .mini-kpi { padding: 14px; border: 1px solid var(--line); border-radius: 13px; background: var(--white); }
-    .mini-kpi span { display: block; color: var(--muted); font-size: 10px; }
-    .mini-kpi strong { display: block; margin-top: 5px; font-size: 22px; letter-spacing: -.04em; }
-    .mini-kpi em { display: block; margin-top: 3px; color: var(--green); font-size: 9px; font-style: normal; }
-    .chart-card { margin-top: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 13px; background: var(--white); }
-    .chart-head { display: flex; justify-content: space-between; gap: 10px; font-size: 10px; font-weight: 750; }
-    .chart-head span:last-child { color: var(--muted); font-weight: 500; }
-    .bars { display: flex; height: 82px; align-items: end; gap: 8px; padding-top: 14px; }
-    .bars i { flex: 1; min-width: 8px; border-radius: 5px 5px 2px 2px; background: #b7db80; }
-    .bars i:nth-child(2n) { background: #1b7a56; }
-    .bars i:nth-child(1) { height: 42%; }.bars i:nth-child(2) { height: 60%; }.bars i:nth-child(3) { height: 50%; }.bars i:nth-child(4) { height: 76%; }.bars i:nth-child(5) { height: 66%; }.bars i:nth-child(6) { height: 92%; }.bars i:nth-child(7) { height: 80%; }
-    .dash-foot { display: flex; justify-content: space-between; padding: 11px 17px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
-    .trust-row { padding: 22px 0; border-bottom: 1px solid var(--line); background: var(--white); }
-    .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .trust-label { color: var(--muted); font-size: 12px; font-weight: 700; }
-    .trust-items { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 11px; }
-    .trust-items span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; color: #52635a; font-size: 11px; font-weight: 700; }
-    section { padding: 88px 0; }
-    .section-heading { max-width: 650px; margin-bottom: 38px; }
-    .section-heading .eyebrow { color: var(--green); }
-    h2 { margin-bottom: 14px; font-size: clamp(32px, 4vw, 49px); line-height: 1.05; letter-spacing: -.055em; }
-    .section-intro { margin-bottom: 0; color: var(--muted); font-size: 16px; }
-    .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    .module { min-height: 218px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
-    .module:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .module-icon { display: grid; width: 43px; height: 43px; margin-bottom: 22px; place-items: center; border-radius: 14px; background: #eff5e5; color: var(--green); font-size: 20px; }
-    .module h3 { margin-bottom: 8px; font-size: 17px; letter-spacing: -.025em; }
-    .module p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
-    .workflow { padding: 74px 0; background: #edf2e8; }
-    .workflow-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 68px; }
-    .workflow .section-heading { margin: 0; }
-    .steps { display: grid; gap: 13px; }
-    .step { display: grid; grid-template-columns: 46px 1fr; gap: 16px; padding: 18px; border: 1px solid rgba(11,36,30,.1); border-radius: 17px; background: rgba(255,255,255,.72); }
-    .step-number { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: var(--forest); color: var(--lime); font-size: 12px; font-weight: 800; }
-    .step h3 { margin: 2px 0 4px; font-size: 15px; }
-    .step p { margin: 0; color: var(--muted); font-size: 12px; }
-    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .principle { padding: 23px; border-radius: 18px; background: var(--white); }
-    .principle strong { display: block; margin-bottom: 8px; font-size: 15px; }
-    .principle p { margin: 0; color: var(--muted); font-size: 13px; }
-    .callout { padding: 0 0 86px; }
-    .callout-box { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 42px; border-radius: 26px; background: var(--forest); color: var(--white); }
-    .callout-box h2 { max-width: 620px; margin-bottom: 8px; font-size: clamp(28px, 4vw, 42px); }
-    .callout-box p { max-width: 600px; margin: 0; color: #b9cbc1; font-size: 14px; }
-    .footer { padding: 25px 0; border-top: 1px solid var(--line); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer p { margin: 0; color: var(--muted); font-size: 11px; }
-    .footer-links { display: flex; gap: 18px; }
-    .footer-links a { color: var(--muted); font-size: 11px; text-decoration: none; }
-    .footer-links a:hover { color: var(--green); }
-    :focus-visible { outline: 3px solid #78a936; outline-offset: 3px; }
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr  .88fr; gap: 35px; }
-      .module-grid { grid-template-columns: repeat(2, 1fr); }
-      .workflow-grid { gap: 36px; }
-    }
-    @media (max-width: 700px) {
-      .wrap { width: min(100% - 36px, 560px); }
-      .nav { min-height: 68px; }
-      .menu-toggle { display: inline-grid; place-items: center; }
-      .nav-cta { display: none; }
-      .nav-links { position: absolute; top: 67px; right: 18px; left: 18px; display: none; align-items: stretch; gap: 0; padding: 9px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); box-shadow: var(--shadow); }
-      .nav-links[data-open="true"] { display: flex; flex-direction: column; }
-      .nav-links a { padding: 12px; }
-      .hero { padding: 61px 0 55px; }
-      .hero-grid, .workflow-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 44px; }
-      h1 { max-width: 520px; font-size: clamp(45px, 13vw, 68px); }
-      .hero-copy { font-size: 15px; }
-      .dashboard { max-width: 480px; margin: auto; transform: none; }
-      .trust-inner { align-items: flex-start; flex-direction: column; }
-      .trust-items { justify-content: flex-start; }
-      section { padding: 68px 0; }
-      .workflow { padding: 65px 0; }
-      .workflow-grid { gap: 30px; }
-      .callout { padding-bottom: 65px; }
-      .callout-box { align-items: flex-start; flex-direction: column; padding: 29px; }
-    }
-    @media (max-width: 480px) {
-      .module-grid, .principles { grid-template-columns: 1fr; }
-      .module { min-height: 0; }
-      .hero-actions { align-items: stretch; flex-direction: column; }
-      .hero-actions .button { width: 100%; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-    }
+    :root{color-scheme:light;--bg:#f6f7f2;--surface:#fff;--surface-2:#edf2e8;--ink:#17251f;--muted:#66756d;--line:#e1e8df;--forest:#0b241e;--forest-2:#153b30;--green:#1b7956;--lime:#c9ef73;--shadow:0 24px 70px rgba(11,36,30,.12);--header:rgba(246,247,242,.9);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    :root[data-theme=dark]{color-scheme:dark;--bg:#101713;--surface:#18221c;--surface-2:#202e24;--ink:#edf4ed;--muted:#a1b0a5;--line:#304035;--forest:#091a15;--forest-2:#132d23;--green:#75d0a4;--lime:#d2f28b;--shadow:0 24px 70px rgba(0,0,0,.28);--header:rgba(16,23,19,.9)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55}a{color:inherit}button,input,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}.wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}.skip{position:absolute;z-index:30;top:10px;left:10px;padding:10px 14px;transform:translateY(-160%);border-radius:8px;background:var(--lime);color:var(--forest);font-weight:750}.skip:focus{transform:translateY(0)}
+    .header{position:sticky;z-index:20;top:0;border-bottom:1px solid var(--line);background:var(--header);backdrop-filter:blur(14px)}.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;letter-spacing:-.04em}.brand-mark{display:grid;width:38px;height:38px;place-items:center;border-radius:13px;background:var(--forest);color:var(--lime);font-size:14px;letter-spacing:-.07em}.brand-name{font-size:17px}.nav-links{display:flex;align-items:center;gap:28px}.nav-links a{color:var(--muted);font-size:13px;font-weight:700;text-decoration:none}.nav-links a:hover{color:var(--green)}.nav-actions{display:flex;align-items:center;gap:9px}.theme-toggle,.menu-toggle{display:inline-grid;width:42px;height:42px;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);cursor:pointer}.theme-toggle svg{width:18px;height:18px}.menu-toggle{display:none}.button{display:inline-flex;min-height:47px;align-items:center;justify-content:center;gap:9px;padding:0 19px;border:0;border-radius:999px;background:var(--lime);color:var(--forest);font-weight:780;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}.button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}.button-dark{background:var(--forest);color:#fff}.button-outline{border:1px solid rgba(255,255,255,.34);background:transparent;color:#fff}.small-button{min-height:41px;padding-inline:16px;font-size:12px}
+    .hero{position:relative;overflow:hidden;padding:78px 0 74px;background:var(--forest);color:#fff}.hero:before,.hero:after{position:absolute;content:"";border:1px solid rgba(201,239,115,.14);border-radius:50%;pointer-events:none}.hero:before{width:720px;height:720px;top:-430px;right:-210px}.hero:after{width:520px;height:520px;top:-330px;right:-110px}.hero-grid{position:relative;display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:64px}.eyebrow{display:inline-flex;align-items:center;gap:9px;margin:0 0 19px;color:var(--green);font-size:11px;font-weight:850;letter-spacing:.15em;text-transform:uppercase}.hero .eyebrow{color:var(--lime)}.eyebrow:before{width:23px;height:1px;background:currentColor;content:""}h1,h2,h3,p{margin-top:0}h1{max-width:680px;margin-bottom:20px;font-size:clamp(44px,6.2vw,76px);line-height:.99;letter-spacing:-.065em}h1 span{color:var(--lime)}.hero-copy{max-width:550px;margin-bottom:28px;color:#c4d1c9;font-size:16px}.hero-actions{display:flex;flex-wrap:wrap;gap:11px}.hero-note{margin:17px 0 0;color:#9eb0a5;font-size:11px}.preview{padding:15px;border:1px solid rgba(255,255,255,.16);border-radius:25px;background:rgba(255,255,255,.08);box-shadow:0 30px 90px rgba(0,0,0,.24);transform:rotate(1deg)}.preview-window{overflow:hidden;border-radius:16px;background:var(--bg);color:var(--ink)}.preview-head,.preview-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;border-bottom:1px solid var(--line)}.preview-title{font-size:12px;font-weight:800}.preview-badge{padding:5px 9px;border-radius:99px;background:var(--surface-2);color:var(--muted);font-size:9px;font-weight:750}.preview-content{padding:16px}.preview-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.preview-kpi{padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.preview-kpi span,.preview-kpi small{display:block;color:var(--muted);font-size:9px}.preview-kpi strong{display:block;margin:4px 0;font-size:20px;letter-spacing:-.04em}.preview-kpi small{color:var(--green)}.preview-chart{margin-top:9px;padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.chart-top{display:flex;justify-content:space-between;gap:8px;font-size:9px;font-weight:750}.chart-top span:last-child{color:var(--muted);font-weight:500}.bars{display:flex;height:70px;align-items:end;gap:8px;padding-top:12px}.bars i{flex:1;min-width:8px;border-radius:5px 5px 2px 2px;background:#a9d579}.bars i:nth-child(even){background:var(--green)}.bars i:nth-child(1){height:42%}.bars i:nth-child(2){height:61%}.bars i:nth-child(3){height:49%}.bars i:nth-child(4){height:76%}.bars i:nth-child(5){height:65%}.bars i:nth-child(6){height:93%}.bars i:nth-child(7){height:80%}.preview-foot{border-top:1px solid var(--line);border-bottom:0;color:var(--muted);font-size:9px}
+    .strip{padding:21px 0;border-bottom:1px solid var(--line);background:var(--surface)}.strip-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}.strip-label{color:var(--muted);font-size:11px;font-weight:750}.chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:9px}.chip{padding:7px 11px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px;font-weight:700}
+    section.content{padding:82px 0}.heading{max-width:650px;margin-bottom:34px}.heading h2{margin-bottom:13px;font-size:clamp(31px,4vw,48px);line-height:1.06;letter-spacing:-.055em}.intro{margin-bottom:0;color:var(--muted);font-size:15px}.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.module{min-height:205px;padding:23px;border:1px solid var(--line);border-radius:22px;background:var(--surface);transition:transform .2s ease,box-shadow .2s ease}.module:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.icon{display:grid;width:41px;height:41px;margin-bottom:19px;place-items:center;border-radius:13px;background:var(--surface-2);color:var(--green);font-size:19px}.module h3{margin-bottom:7px;font-size:16px;letter-spacing:-.02em}.module p{margin:0;color:var(--muted);font-size:12px}
+    .workflow{padding:72px 0;background:var(--surface-2)}.workflow-grid{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:65px}.workflow .heading{margin:0}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:43px 1fr;gap:14px;padding:17px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}.step-number{display:grid;width:36px;height:36px;place-items:center;border-radius:50%;background:var(--forest);color:var(--lime);font-size:11px;font-weight:850}.step h3{margin:2px 0 4px;font-size:14px}.step p{margin:0;color:var(--muted);font-size:11px}
+    .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.principle{padding:21px;border:1px solid var(--line);border-radius:17px;background:var(--surface)}.principle strong{display:block;margin-bottom:7px;font-size:14px}.principle p{margin:0;color:var(--muted);font-size:12px}
+    .contact{padding:75px 0;background:var(--forest);color:#fff}.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:start}.contact .eyebrow{color:var(--lime)}.contact h2{margin-bottom:12px;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.055em}.contact-copy{color:#c4d1c9;font-size:14px}.contact-note{color:#9eb0a5;font-size:11px}.form-card{padding:23px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(255,255,255,.07)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:750}.field input,.field textarea{width:100%;padding:11px 12px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(5,20,15,.34);color:#fff}.field input::placeholder,.field textarea::placeholder{color:#a5b7ac}.field textarea{min-height:115px;resize:vertical}.field input:focus,.field textarea:focus{outline:2px solid var(--lime);outline-offset:1px}.consent{display:flex;align-items:flex-start;gap:9px;color:#c4d1c9;font-size:10px}.consent input{margin-top:2px;accent-color:var(--lime)}.form-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:15px}.form-status{min-height:20px;color:var(--lime);font-size:11px}.hidden{position:absolute;left:-5000px}.footer{padding:23px 0;border-top:1px solid var(--line)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}.footer p{margin:0;color:var(--muted);font-size:10px}.footer-links{display:flex;gap:17px}.footer-links a{color:var(--muted);font-size:10px;text-decoration:none}.footer-links a:hover{color:var(--green)}:focus-visible{outline:3px solid #78a936;outline-offset:3px}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr .9fr;gap:35px}.modules{grid-template-columns:repeat(2,1fr)}.workflow-grid,.contact-grid{gap:35px}}
+    @media(max-width:700px){.wrap{width:min(100% - 36px,560px)}.nav{min-height:67px}.menu-toggle{display:inline-grid}.nav-links{position:absolute;top:66px;right:18px;left:18px;display:none;align-items:stretch;gap:0;padding:8px;border:1px solid var(--line);border-radius:15px;background:var(--surface);box-shadow:var(--shadow)}.nav-links[data-open=true]{display:flex;flex-direction:column}.nav-links a{padding:11px}.hero{padding:58px 0 52px}.hero-grid,.workflow-grid,.contact-grid{grid-template-columns:1fr}.hero-grid{gap:40px}h1{font-size:clamp(45px,13vw,66px)}.hero-copy{font-size:14px}.preview{max-width:470px;margin:auto;transform:none}.strip-inner{align-items:flex-start;flex-direction:column}.chips{justify-content:flex-start}section.content{padding:64px 0}.workflow{padding:62px 0}.contact{padding:62px 0}.workflow-grid,.contact-grid{gap:28px}}
+    @media(max-width:480px){.modules,.principles,.form-grid{grid-template-columns:1fr}.module{min-height:0}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .button{width:100%}.field.full{grid-column:auto}.form-bottom,.footer-inner{align-items:flex-start;flex-direction:column}.form-bottom .button{width:100%}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="header">
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Ibra Dreams home">
-        <span class="brand-mark" aria-hidden="true">ID</span>
-        <span class="brand-name">Ibra Dreams</span>
-      </a>
-      <nav class="nav-links" id="site-navigation" aria-label="Main navigation" data-open="false">
-        <a href="#platform">Platform</a>
-        <a href="#workflow">How it works</a>
-        <a href="#principles">Principles</a>
-      </nav>
-      <a class="nav-cta" href="#contact">Explore the platform <span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-  </header>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header"><div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Ibra Dreams home"><span class="brand-mark" aria-hidden="true">ID</span><span class="brand-name">Ibra Dreams</span></a>
+    <nav class="nav-links" id="navigation" aria-label="Main navigation" data-open="false"><a href="#platform">Platform</a><a href="#workflow">How it works</a><a href="#principles">Principles</a><a href="#contact">Contact</a></nav>
+    <div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+  </div></header>
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow">A practical management workspace</p>
-          <h1 id="hero-title">One clearer view of <span>the work.</span></h1>
-          <p class="hero-copy">Bring the moving parts of your operation into one place—from daily sales and stock to finance, people and fleet activity.</p>
-          <div class="hero-actions">
-            <a class="button" href="#platform">Explore the platform <span aria-hidden="true">↓</span></a>
-            <a class="button button-outline" href="#workflow">See how it works</a>
-          </div>
-          <p class="hero-note">Designed around practical workflows for growing, multi-team operations.</p>
-        </div>
-        <div class="dashboard" aria-label="Illustrative management dashboard preview">
-          <div class="dash-window">
-            <div class="dash-top"><span class="dash-title">Operations overview</span><span class="dash-period">SAMPLE VIEW</span></div>
-            <div class="dash-body">
-              <div class="mini-kpis">
-                <div class="mini-kpi"><span>Sales activity</span><strong>—</strong><em>Track by period</em></div>
-                <div class="mini-kpi"><span>Stock position</span><strong>—</strong><em>Monitor movement</em></div>
-                <div class="mini-kpi"><span>Open workflows</span><strong>—</strong><em>Review next actions</em></div>
-                <div class="mini-kpi"><span>Team coverage</span><strong>—</strong><em>Keep work visible</em></div>
-              </div>
-              <div class="chart-card">
-                <div class="chart-head"><span>Activity over time</span><span>Illustrative · no live data</span></div>
-                <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <div class="dash-foot"><span>Management workspace</span><span>Sample interface</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="trust-row" aria-label="Platform areas">
-      <div class="wrap trust-inner"><span class="trust-label">A connected view across</span><div class="trust-items"><span>Sales &amp; customers</span><span>Stock &amp; logistics</span><span>Finance &amp; controls</span><span>People &amp; planning</span></div></div>
-    </div>
-    <section id="platform" aria-labelledby="platform-title">
-      <div class="wrap">
-        <div class="section-heading"><p class="eyebrow">The platform</p><h2 id="platform-title">The everyday essentials, working together.</h2><p class="section-intro">A modular workspace that helps teams record activity, follow up exceptions and keep management information in view.</p></div>
-        <div class="module-grid">
-          <article class="module"><div class="module-icon" aria-hidden="true">↗</div><h3>Sales &amp; customer accounts</h3><p>Capture sales, organize customer records, follow receivables and keep route activity visible.</p></article>
-          <article class="module"><div class="module-icon" aria-hidden="true">▤</div><h3>Stock &amp; returnables</h3><p>Follow stock movement, reorder needs, physical counts, returnable packaging and variances.</p></article>
-          <article class="module"><div class="module-icon" aria-hidden="true">◷</div><h3>Finance &amp; reconciliation</h3><p>Bring together management reports, bank reconciliation, creditors and supporting workflows.</p></article>
-          <article class="module"><div class="module-icon" aria-hidden="true">◎</div><h3>People &amp; compliance</h3><p>Keep staff records, schedules, leave requests and compliance follow-ups in one workspace.</p></article>
-          <article class="module"><div class="module-icon" aria-hidden="true">⌁</div><h3>Fleet &amp; logistics</h3><p>Coordinate vehicles and trips, record transport activity and monitor operational details.</p></article>
-          <article class="module"><div class="module-icon" aria-hidden="true">▦</div><h3>Management planning</h3><p>Set targets, assign actions, review risks and assemble regular management information.</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
-      <div class="wrap workflow-grid">
-        <div class="section-heading"><p class="eyebrow">A useful rhythm</p><h2 id="workflow-title">From daily entries to decisions.</h2><p class="section-intro">Make operational information easier to collect, check and act on with a straightforward team workflow.</p></div>
-        <div class="steps">
-          <article class="step"><span class="step-number">01</span><div><h3>Record the work</h3><p>Enter day-to-day sales, stock movements, payments, trips and team updates.</p></div></article>
-          <article class="step"><span class="step-number">02</span><div><h3>Review exceptions</h3><p>Surface variances, overdue actions and items that need attention or approval.</p></div></article>
-          <article class="step"><span class="step-number">03</span><div><h3>Share the picture</h3><p>Use consistent reports and ownership to support more informed operating decisions.</p></div></article>
-        </div>
-      </div>
-    </section>
-    <section id="principles" aria-labelledby="principles-title">
-      <div class="wrap">
-        <div class="section-heading"><p class="eyebrow">Built for clarity</p><h2 id="principles-title">Useful information. Clear context.</h2><p class="section-intro">Management tools are most useful when people can tell what is known, what is estimated and what still needs checking.</p></div>
-        <div class="principles">
-          <article class="principle"><strong>One operational picture</strong><p>Connect core business workflows without hiding the details teams need to verify.</p></article>
-          <article class="principle"><strong>Visible ownership</strong><p>Make responsibilities, approvals and follow-up actions easier to understand.</p></article>
-          <article class="principle"><strong>Actuals stay distinct</strong><p>Separate verified figures from assumptions, plans and illustrative sample views.</p></article>
-          <article class="principle"><strong>Designed to grow</strong><p>Use a modular structure that can evolve with business needs and validated processes.</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="callout" id="contact" aria-labelledby="contact-title">
-      <div class="wrap"><div class="callout-box"><div><p class="eyebrow">Ibra Dreams</p><h2 id="contact-title">A more connected way to manage the day.</h2><p>This page introduces the management-system concept. Product access, integrations and production deployment should be configured and reviewed separately.</p></div><a class="button" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></div>
-    </section>
+    <section class="hero" id="top" aria-labelledby="hero-title"><div class="wrap hero-grid">
+      <div><p class="eyebrow">A practical management workspace</p><h1 id="hero-title">One clearer view of <span>the work.</span></h1><p class="hero-copy">Bring the moving parts of your operation into one place—from daily sales and stock to finance, people and fleet activity.</p><div class="hero-actions"><a class="button" href="#platform">Explore the platform <span aria-hidden="true">↓</span></a><a class="button button-outline" href="#contact">Talk with our team</a></div><p class="hero-note">A management-system concept for connected teams and everyday operations.</p></div>
+      <div class="preview" aria-label="Illustrative dashboard preview. No live data is shown."><div class="preview-window"><div class="preview-head"><span class="preview-title">Operations overview</span><span class="preview-badge">SAMPLE VIEW</span></div><div class="preview-content"><div class="preview-kpis"><div class="preview-kpi"><span>Sales activity</span><strong>—</strong><small>Track by period</small></div><div class="preview-kpi"><span>Stock position</span><strong>—</strong><small>Monitor movement</small></div><div class="preview-kpi"><span>Open workflows</span><strong>—</strong><small>Review next actions</small></div><div class="preview-kpi"><span>Team coverage</span><strong>—</strong><small>Keep work visible</small></div></div><div class="preview-chart"><div class="chart-top"><span>Activity over time</span><span>Illustrative · no live data</span></div><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="preview-foot"><span>Management workspace</span><span>Sample interface</span></div></div></div>
+    </div></section>
+    <div class="strip"><div class="wrap strip-inner"><span class="strip-label">A connected view across</span><div class="chips"><span class="chip">Sales &amp; customers</span><span class="chip">Stock &amp; logistics</span><span class="chip">Finance &amp; controls</span><span class="chip">People &amp; planning</span></div></div></div>
+    <section class="content" id="platform" aria-labelledby="platform-title"><div class="wrap"><div class="heading"><p class="eyebrow">The platform</p><h2 id="platform-title">Everyday essentials, working together.</h2><p class="intro">A modular workspace to record activity, follow up exceptions and keep management information in view.</p></div><div class="modules">
+      <article class="module"><span class="icon" aria-hidden="true">↗</span><h3>Sales &amp; customer accounts</h3><p>Capture sales, organize customer records, follow receivables and keep route activity visible.</p></article>
+      <article class="module"><span class="icon" aria-hidden="true">▤</span><h3>Stock &amp; returnables</h3><p>Follow stock movement, reorder needs, physical counts, returnable packaging and variances.</p></article>
+      <article class="module"><span class="icon" aria-hidden="true">◷</span><h3>Finance &amp; reconciliation</h3><p>Bring together management reports, bank reconciliation, creditors and supporting workflows.</p></article>
+      <article class="module"><span class="icon" aria-hidden="true">◎</span><h3>People &amp; compliance</h3><p>Keep staff records, schedules, leave requests and compliance follow-ups in one workspace.</p></article>
+      <article class="module"><span class="icon" aria-hidden="true">⌁</span><h3>Fleet &amp; logistics</h3><p>Coordinate vehicles and trips, record transport activity and monitor operational details.</p></article>
+      <article class="module"><span class="icon" aria-hidden="true">▦</span><h3>Management planning</h3><p>Set targets, assign actions, review risks and assemble regular management information.</p></article>
+    </div></div></section>
+    <section class="workflow" id="workflow" aria-labelledby="workflow-title"><div class="wrap workflow-grid"><div class="heading"><p class="eyebrow">A useful rhythm</p><h2 id="workflow-title">From daily entries to decisions.</h2><p class="intro">Make operational information easier to collect, check and act on with a straightforward team workflow.</p></div><div class="steps"><article class="step"><span class="step-number">01</span><div><h3>Record the work</h3><p>Enter day-to-day sales, stock movements, payments, trips and team updates.</p></div></article><article class="step"><span class="step-number">02</span><div><h3>Review exceptions</h3><p>Surface variances, overdue actions and items that need attention or approval.</p></div></article><article class="step"><span class="step-number">03</span><div><h3>Share the picture</h3><p>Use consistent reports and ownership to support informed operating decisions.</p></div></article></div></div></section>
+    <section class="content" id="principles" aria-labelledby="principles-title"><div class="wrap"><div class="heading"><p class="eyebrow">Built for clarity</p><h2 id="principles-title">Useful information. Clear context.</h2><p class="intro">Management tools work best when people can tell what is known, what is estimated and what still needs checking.</p></div><div class="principles"><article class="principle"><strong>One operational picture</strong><p>Connect core business workflows without hiding the details teams need to verify.</p></article><article class="principle"><strong>Visible ownership</strong><p>Make responsibilities, approvals and follow-up actions easier to understand.</p></article><article class="principle"><strong>Actuals stay distinct</strong><p>Separate verified figures from assumptions, plans and illustrative sample views.</p></article><article class="principle"><strong>Designed to grow</strong><p>Use a modular structure that can evolve with validated business processes.</p></article></div></div></section>
+    <section class="contact" id="contact" aria-labelledby="contact-title"><div class="wrap contact-grid"><div><p class="eyebrow">Get in touch</p><h2 id="contact-title">Let’s make the day easier to manage.</h2><p class="contact-copy">Send a note to ask about the platform, discuss a workflow or share what your team needs.</p><p class="contact-note">Please do not include passwords, financial account details or sensitive personal information.</p></div>
+      <form class="form-card" name="contact" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden"><label>Leave this field empty: <input name="bot-field"></label></p>
+        <div class="form-grid"><div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required maxlength="100"></div><div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></div><div class="field full"><label for="topic">What would you like to discuss?</label><input id="topic" name="topic" placeholder="A short subject" required maxlength="140"></div><div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us a little about what you need…" required maxlength="3000"></textarea></div><div class="field full"><label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that Ibra Dreams may use these details to respond to my enquiry.</span></label></div></div>
+        <div class="form-bottom"><p class="form-status" id="form-status" role="status" aria-live="polite">Submissions are handled by the site host when Netlify Forms is enabled.</p><button class="button" type="submit">Send enquiry <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </div></section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">ID</span><span class="brand-name">Ibra Dreams</span></a><p>© <span id="year"></span> Ibra Dreams. Management workspace concept.</p><div class="footer-links"><a href="#platform">Platform</a><a href="#principles">Principles</a></div></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">ID</span><span class="brand-name">Ibra Dreams</span></a><p>© <span id="year"></span> Ibra Dreams · Management workspace concept</p><div class="footer-links"><a href="#platform">Platform</a><a href="#contact">Contact</a></div></div></footer>
   <script>
-    const menuButton = document.querySelector('.menu-toggle');
-    const navigation = document.querySelector('#site-navigation');
-    menuButton.addEventListener('click', () => {
-      const open = menuButton.getAttribute('aria-expanded') !== 'true';
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      navigation.dataset.open = String(open);
-    });
-    navigation.addEventListener('click', (event) => {
-      if (event.target.closest('a')) {
-        navigation.dataset.open = 'false';
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Open navigation');
+    (() => {
+      const root = document.documentElement;
+      const themeButton = document.querySelector('.theme-toggle');
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const menuButton = document.querySelector('.menu-toggle');
+      const navigation = document.querySelector('#navigation');
+      const savedTheme = (() => { try { return localStorage.getItem('ibra-theme'); } catch { return null; } })();
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      function setTheme(theme, persist = true) {
+        const dark = theme === 'dark';
+        root.dataset.theme = dark ? 'dark' : 'light';
+        themeButton.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        themeButton.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        themeButton.innerHTML = dark
+          ? '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        themeMeta.content = dark ? '#101713' : '#f6f7f2';
+        if (persist) { try { localStorage.setItem('ibra-theme', dark ? 'dark' : 'light'); } catch { /* Storage may be disabled. */ } }
       }
-    });
-    document.querySelector('#year').textContent = new Date().getFullYear();
+      setTheme(savedTheme || (systemDark ? 'dark' : 'light'), false);
+      themeButton.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+      menuButton.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') !== 'true';
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        navigation.dataset.open = String(open);
+      });
+      navigation.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          navigation.dataset.open = 'false';
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Open navigation');
+        }
+      });
+      document.querySelector('#year').textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
