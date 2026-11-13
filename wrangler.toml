@@ -1,0 +1,5 @@
+name = "ibra-dreams-system"
+compatibility_date = "2026-11-13"
+
+[assets]
+directory = "./" # Change this to "./public" or "./dist" if your HTML files are located in a subfolder
